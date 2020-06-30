@@ -2,6 +2,7 @@
 // Enforces HTTPS everywhere
 // Date: 02/25/2018
 
+// icons in this app are used from "https://icons8.com/"
 // use browserObj to make the code browser agnostic
 browserObj = (function () { return  window.browser || window.chrome; })();
 browserObj.enable_override = false;
@@ -35,15 +36,15 @@ browserObj.runtime.onMessage.addListener( function(request, sender, sendResponse
             console.log("Enabling insecure Browsing");
             browserObj.enable_override = true;
             browserObj.browserAction.setIcon({ path: "icons/insecure_48.png" });
-            browserObj.browserAction.setBadgeText({text:"X"});
+            browserObj.browserAction.setBadgeText({text:""});
             browserObj.browserAction.setBadgeBackgroundColor({color:[194, 0, 0, 230]});
         } else {
             sendResponse( "OKAY" );
-            console.log("Enabling insecure Browsing");
+            console.log("Enabling Secure Browsing");
             browserObj.enable_override = false;
             browserObj.browserAction.setIcon({ path: "icons/secured_48.png" });
             browserObj.browserAction.setBadgeText({text:""});
-            browserObj.browserAction.setBadgeBackgroundColor({color:[0,0,0,0]});
+            browserObj.browserAction.setBadgeBackgroundColor({color:[194,0,0,230]});
         }
     } else if ( request.greeting === 'get_enable_override') {
         console.log("responding to get_enable_override");
